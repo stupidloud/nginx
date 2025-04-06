@@ -1,4 +1,4 @@
-+# Nginx location指令解析逻辑
+# Nginx location指令解析逻辑
 
 ## 目录
 
