@@ -1,5 +1,24 @@
 +# Nginx location指令解析逻辑
 
+## 目录
+
+- [1. location指令概述](#1-location指令概述)
+- [2. location指令的语法](#2-location指令的语法)
+- [3. location指令的解析过程](#3-location指令的解析过程)
+  - [3.1 配置解析阶段](#31-配置解析阶段)
+  - [3.2 添加location到locations队列](#32-添加location到locations队列)
+  - [3.3 构建location树](#33-构建location树)
+- [4. 请求处理阶段的location匹配](#4-请求处理阶段的location匹配)
+  - [4.1 静态location匹配](#41-静态location匹配)
+  - [4.2 正则location匹配](#42-正则location匹配)
+- [5. location指令的匹配优先级](#5-location指令的匹配优先级)
+- [6. 命名location](#6-命名location)
+- [7. 实际配置示例](#7-实际配置示例)
+- [8. 正则匹配详解](#8-正则匹配详解)
+- [9. location匹配流程图](#9-location匹配流程图)
+- [10. 常见陷阱和最佳实践](#10-常见陷阱和最佳实践)
+- [11. 总结](#11-总结)
+
 ## 1. location指令概述
 
 location指令是Nginx中最重要的指令之一，用于根据请求的URI来匹配不同的配置块，从而实现不同的处理逻辑。location指令可以嵌套使用，并且支持多种匹配方式。
